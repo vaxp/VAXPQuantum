@@ -1,0 +1,1040 @@
+========================================================
+   Venom Project: Unified Execution Script
+   Timestamp: Sun Jan 11 06:02:07 PM +03 2026
+========================================================
+========================================================
+   Global Build
+========================================================
+rm -rf build
+🧹 Build directory cleaned
+gcc -Wall -Wextra -O2 -g -I. -IVenomQuantum/include -IVenomFloat/include -IVenomStringSeek/include -IVenomML/include -c VenomQuantum/src/venom_quantum.c -o build/obj/venom_quantum.o
+ar rcs build/lib/libvenom_quantum.a build/obj/venom_quantum.o
+✅ VenomQuantum built
+gcc -Wall -Wextra -O2 -g -I. -IVenomQuantum/include -IVenomFloat/include -IVenomStringSeek/include -IVenomML/include -c VenomFloat/src/venom_float.c -o build/obj/venom_float.o
+ar rcs build/lib/libvenom_float.a build/obj/venom_float.o
+✅ VenomFloat built
+gcc -Wall -Wextra -O2 -g -I. -IVenomQuantum/include -IVenomFloat/include -IVenomStringSeek/include -IVenomML/include -c VenomStringSeek/src/venom_string_seek.c -o build/obj/venom_string_seek.o
+ar rcs build/lib/libvenom_string_seek.a build/obj/venom_string_seek.o
+✅ VenomStringSeek built
+gcc -Wall -Wextra -O2 -g -I. -IVenomQuantum/include -IVenomFloat/include -IVenomStringSeek/include -IVenomML/include -c VenomML/src/venom_ml.c -o build/obj/venom_ml.o
+gcc -Wall -Wextra -O2 -g -I. -IVenomQuantum/include -IVenomFloat/include -IVenomStringSeek/include -IVenomML/include -c VenomML/src/qgci.c -o build/obj/qgci.o
+gcc -Wall -Wextra -O2 -g -I. -IVenomQuantum/include -IVenomFloat/include -IVenomStringSeek/include -IVenomML/include -c VenomML/src/quantum_nn.c -o build/obj/quantum_nn.o
+gcc -Wall -Wextra -O2 -g -I. -IVenomQuantum/include -IVenomFloat/include -IVenomStringSeek/include -IVenomML/include -c VenomML/src/resonance.c -o build/obj/resonance.o
+gcc -Wall -Wextra -O2 -g -I. -IVenomQuantum/include -IVenomFloat/include -IVenomStringSeek/include -IVenomML/include -c VenomML/src/vision.c -o build/obj/vision.o
+gcc -Wall -Wextra -O2 -g -I. -IVenomQuantum/include -IVenomFloat/include -IVenomStringSeek/include -IVenomML/include -c VenomML/src/vsqn.c -o build/obj/vsqn.o
+gcc -Wall -Wextra -O2 -g -I. -IVenomQuantum/include -IVenomFloat/include -IVenomStringSeek/include -IVenomML/include -c VenomML/src/quantum_vision.c -o build/obj/quantum_vision.o
+gcc -Wall -Wextra -O2 -g -I. -IVenomQuantum/include -IVenomFloat/include -IVenomStringSeek/include -IVenomML/include -c VenomML/src/schrodinger_detect.c -o build/obj/schrodinger_detect.o
+VenomML/src/schrodinger_detect.c: In function ‘calculate_wave_amplitude’:
+VenomML/src/schrodinger_detect.c:33:82: warning: unused parameter ‘target_sig’ [-Wunused-parameter]
+   33 | static float calculate_wave_amplitude(VenomTensor* frame, int x, int y, uint64_t target_sig) {
+      |                                                                         ~~~~~~~~~^~~~~~~~~~
+gcc -Wall -Wextra -O2 -g -I. -IVenomQuantum/include -IVenomFloat/include -IVenomStringSeek/include -IVenomML/include -c VenomML/src/entropic_opt.c -o build/obj/entropic_opt.o
+gcc -Wall -Wextra -O2 -g -I. -IVenomQuantum/include -IVenomFloat/include -IVenomStringSeek/include -IVenomML/include -c VenomML/src/causal_tracking.c -o build/obj/causal_tracking.o
+gcc -Wall -Wextra -O2 -g -I. -IVenomQuantum/include -IVenomFloat/include -IVenomStringSeek/include -IVenomML/include -c VenomML/src/persistence.c -o build/obj/persistence.o
+VenomML/src/persistence.c: In function ‘venom_cortex_init’:
+VenomML/src/persistence.c:168:5: warning: ignoring return value of ‘system’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  168 |     system(cmd);
+      |     ^~~~~~~~~~~
+ar rcs build/lib/libvenom_ml.a build/obj/venom_ml.o build/obj/qgci.o build/obj/quantum_nn.o build/obj/resonance.o build/obj/vision.o build/obj/vsqn.o build/obj/quantum_vision.o build/obj/schrodinger_detect.o build/obj/entropic_opt.o build/obj/causal_tracking.o build/obj/persistence.o
+✅ VenomML built
+📦 Creating combined library...
+ar rcs build/lib/libvenom.a build/obj/combined/*.o
+✅ Combined library built
+✅ Venom Project built successfully!
+📦 Libraries available in build/lib/
+
+
+========================================================
+   MODULE: VenomQuantum
+========================================================
+   [BUILD] Cleaning...
+rm -f test_core_matrix test_entanglement test_hypervector test_tls_soqm test_rdl_dqc_qce_pm test_dsp_shm_ctp test_cage test_cosmic
+rm -f ../../examples/VenomQuantum/example_matrix ../../examples/VenomQuantum/example_entanglement ../../examples/VenomQuantum/example_hypervector ../../examples/VenomQuantum/example_cage ../../examples/VenomQuantum/example_dream ../../examples/VenomQuantum/example_soul ../../examples/VenomQuantum/example_multiverse ../../examples/VenomQuantum/example_qdna
+🧹 Cleaned test and example binaries
+   [BUILD] Compiling...
+gcc -Wall -Wextra -O2 -g -lm -I../.. test_core_matrix.c ../../build/lib/libvenom_quantum.a -o test_core_matrix
+gcc -Wall -Wextra -O2 -g -lm -I../.. test_entanglement.c ../../build/lib/libvenom_quantum.a -o test_entanglement
+gcc -Wall -Wextra -O2 -g -lm -I../.. test_hypervector.c ../../build/lib/libvenom_quantum.a -o test_hypervector
+gcc -Wall -Wextra -O2 -g -lm -I../.. test_tls_soqm.c ../../build/lib/libvenom_quantum.a -o test_tls_soqm
+gcc -Wall -Wextra -O2 -g -lm -I../.. test_rdl_dqc_qce_pm.c ../../build/lib/libvenom_quantum.a -o test_rdl_dqc_qce_pm
+gcc -Wall -Wextra -O2 -g -lm -I../.. test_dsp_shm_ctp.c ../../build/lib/libvenom_quantum.a -o test_dsp_shm_ctp
+gcc -Wall -Wextra -O2 -g -lm -I../.. test_cage.c ../../build/lib/libvenom_quantum.a -o test_cage
+gcc -Wall -Wextra -O2 -g -lm -I../.. test_cosmic.c ../../build/lib/libvenom_quantum.a -o test_cosmic
+gcc -Wall -Wextra -O2 -g -lm -I../.. ../../examples/VenomQuantum/example_matrix.c ../../build/lib/libvenom_quantum.a -o ../../examples/VenomQuantum/example_matrix
+gcc -Wall -Wextra -O2 -g -lm -I../.. ../../examples/VenomQuantum/example_entanglement.c ../../build/lib/libvenom_quantum.a -o ../../examples/VenomQuantum/example_entanglement
+gcc -Wall -Wextra -O2 -g -lm -I../.. ../../examples/VenomQuantum/example_hypervector.c ../../build/lib/libvenom_quantum.a -o ../../examples/VenomQuantum/example_hypervector
+gcc -Wall -Wextra -O2 -g -lm -I../.. ../../examples/VenomQuantum/example_cage.c ../../build/lib/libvenom_quantum.a -o ../../examples/VenomQuantum/example_cage
+gcc -Wall -Wextra -O2 -g -lm -I../.. ../../examples/VenomQuantum/example_dream.c ../../build/lib/libvenom_quantum.a -o ../../examples/VenomQuantum/example_dream
+gcc -Wall -Wextra -O2 -g -lm -I../.. ../../examples/VenomQuantum/example_soul.c ../../build/lib/libvenom_quantum.a -o ../../examples/VenomQuantum/example_soul
+gcc -Wall -Wextra -O2 -g -lm -I../.. ../../examples/VenomQuantum/example_multiverse.c ../../build/lib/libvenom_quantum.a -o ../../examples/VenomQuantum/example_multiverse
+gcc -Wall -Wextra -O2 -g -lm -I../.. ../../examples/VenomQuantum/example_qdna.c ../../build/lib/libvenom_quantum.a -o ../../examples/VenomQuantum/example_qdna
+
+   --- RUNNING TEST IN VenomQuantum ---
+   ▶ Executing test_cage...
+
+╔══════════════════════════════════════════════════════════╗
+║       VenomQuantum: Venom Cage Compression Tests         ║
+╚══════════════════════════════════════════════════════════╝
+
+[31m✗ FAIL[0m: venom_cage_compress_data
+[32m✓ PASS[0m: Compress-Decompress cycle
+   Cage Stats Test:
+[Venom Cage Stats]
+  Original Size: 16 bytes
+  Unique Atoms: 1
+  Compression Ratio: 0.50x
+[32m✓ PASS[0m: venom_cage_ratio (0.50x)
+[32m✓ PASS[0m: venom_cage_save
+[32m✓ PASS[0m: venom_cage_load
+[32m✓ PASS[0m: Save-Load-Decompress integrity
+[32m✓ PASS[0m: venom_cage_free NULL
+[32m✓ PASS[0m: NULL data handling
+   Large Data (10KB):
+[Venom Cage Stats]
+  Original Size: 10000 bytes
+  Unique Atoms: 1
+  Compression Ratio: 1.00x
+[32m✓ PASS[0m: Large data compression
+
+═══════════════════════════════════════════════════════════
+Results: 8 passed, 1 failed
+═══════════════════════════════════════════════════════════
+   [0;31m✗ FAIL[0m: test_cage (Exit Code: 1)
+--------------------------------------------------------
+   ▶ Executing test_core_matrix...
+
+╔══════════════════════════════════════════════════════════╗
+║       VenomQuantum: Core Matrix Operations Tests         ║
+╚══════════════════════════════════════════════════════════╝
+
+[32m✓ PASS[0m: venom_wrap basic
+[32m✓ PASS[0m: venom_wrap_meta
+[32m✓ PASS[0m: venom_quantum_matrix_build
+[32m✓ PASS[0m: venom_quantum_matrix_free
+[32m✓ PASS[0m: venom_quantum_search (found)
+[32m✓ PASS[0m: venom_quantum_search (not found)
+[32m✓ PASS[0m: NULL matrix handling
+[32m✓ PASS[0m: NULL matrix free
+
+═══════════════════════════════════════════════════════════
+Results: 8 passed, 0 failed
+═══════════════════════════════════════════════════════════
+   [0;32m✓ PASS[0m: test_core_matrix
+--------------------------------------------------------
+   ▶ Executing test_cosmic...
+
+╔══════════════════════════════════════════════════════════╗
+║       VenomQuantum: Phase 5-6 Cosmic Features Tests      ║
+╚══════════════════════════════════════════════════════════╝
+
+📊 Quantum Teleportation Protocol (QTP):
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_qtp_teleport
+
+📊 Higgs Logic Field (HLF):
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_hlf_imbue (mass=10.0)
+[32m✓ PASS[0m: venom_hlf_field_strength (1.10)
+
+📊 Multiverse Branching (MVB):
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_mvb_branch (5 universes)
+[32m✓ PASS[0m: venom_mvb_collapse (winner=2)
+
+📊 Vacuum Energy Extraction (VEE):
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_vee_harvest (0.7256, 0.7256)
+[32m✓ PASS[0m: venom_vee_energy_level (1.7256)
+
+📊 Soul Binding (SB):
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_sb_bind_soul (id=CAFEC5436D526014)
+[32m✓ PASS[0m: venom_sb_verify_soul (verified)
+[32m✓ PASS[0m: venom_sb_verify_soul (fake rejected)
+
+📊 Akashic Records (AR):
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_ar_connect (infinite knowledge)
+[32m✓ PASS[0m: venom_ar_consult (wisdom=0xcafebabe)
+[32m✓ PASS[0m: venom_ar_disconnect
+
+📊 Quantum DNA (QDNA):
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_qdna_create
+[32m✓ PASS[0m: venom_qdna_crossover
+[32m✓ PASS[0m: venom_qdna_mutate/fitness (0.9999)
+
+📊 Divine Intervention (DI):
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_di_invoke_miracle
+
+═══════════════════════════════════════════════════════════
+Results: 17 passed, 0 failed
+═══════════════════════════════════════════════════════════
+   [0;32m✓ PASS[0m: test_cosmic
+--------------------------------------------------------
+   ▶ Executing test_dsp_shm_ctp...
+
+╔══════════════════════════════════════════════════════════╗
+║       VenomQuantum: DSP, SHM, CTP Tests                  ║
+╚══════════════════════════════════════════════════════════╝
+
+📊 Dream State Processing (DSP):
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_dsp_create (AWAKE state)
+[32m✓ PASS[0m: venom_dsp_enter_dream (LIGHT)
+[32m✓ PASS[0m: venom_dsp_enter_dream (REM)
+[32m✓ PASS[0m: venom_dsp_consolidate (progress=0.40)
+[32m✓ PASS[0m: venom_dsp_wake
+
+📊 Self-Healing Matrix (SHM):
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_shm_create
+[32m✓ PASS[0m: venom_shm_verify (intact)
+[32m✓ PASS[0m: venom_shm_heal
+
+📊 Consciousness Transfer Protocol (CTP):
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_ctp_export (id=57EC4E9D42D0)
+[32m✓ PASS[0m: venom_ctp_import
+[32m✓ PASS[0m: venom_ctp_clone
+
+═══════════════════════════════════════════════════════════
+Results: 11 passed, 0 failed
+═══════════════════════════════════════════════════════════
+   [0;32m✓ PASS[0m: test_dsp_shm_ctp
+--------------------------------------------------------
+   ▶ Executing test_entanglement...
+
+╔══════════════════════════════════════════════════════════╗
+║       VenomQuantum: Quantum Entanglement Tests           ║
+╚══════════════════════════════════════════════════════════╝
+
+[32m✓ PASS[0m: venom_quantum_entanglement_open
+[32m✓ PASS[0m: venom_quantum_entanglement_close
+[32m✓ PASS[0m: venom_quantum_entangle (3 links)
+[32m✓ PASS[0m: Update entanglement strength
+[32m✓ PASS[0m: venom_quantum_get_entangled (3 partners)
+[32m✓ PASS[0m: Reverse entanglement lookup
+[32m✓ PASS[0m: NULL registry entangle
+[32m✓ PASS[0m: NULL registry get_entangled
+[32m✓ PASS[0m: NULL registry close
+
+═══════════════════════════════════════════════════════════
+Results: 9 passed, 0 failed
+═══════════════════════════════════════════════════════════
+   [0;32m✓ PASS[0m: test_entanglement
+--------------------------------------------------------
+   ▶ Executing test_hypervector...
+
+╔══════════════════════════════════════════════════════════╗
+║       VenomQuantum: HyperDimensional Signatures (HDS)    ║
+╚══════════════════════════════════════════════════════════╝
+
+[32m✓ PASS[0m: venom_hv_encode deterministic
+[32m✓ PASS[0m: venom_hv_encode different concepts
+[32m✓ PASS[0m: venom_hv_encode NULL
+[32m✓ PASS[0m: venom_hv_bind
+[32m✓ PASS[0m: venom_hv_bind self-inverse
+[32m✓ PASS[0m: venom_hv_similarity (same = 1.000)
+[32m✓ PASS[0m: venom_hv_similarity (diff = 0.510)
+[32m✓ PASS[0m: venom_hv_bundle
+   HV Print test: HV[3B65C1F091EC9253.7D7AB64C462EBE15.4E1196E5D87D89DD.F48664C199F7CFA6...]
+[32m✓ PASS[0m: venom_hv_print
+
+═══════════════════════════════════════════════════════════
+Results: 9 passed, 0 failed
+═══════════════════════════════════════════════════════════
+   [0;32m✓ PASS[0m: test_hypervector
+--------------------------------------------------------
+   ▶ Executing test_rdl_dqc_qce_pm...
+
+╔══════════════════════════════════════════════════════════╗
+║       VenomQuantum: RDL, DQC, QCE, PM Tests              ║
+╚══════════════════════════════════════════════════════════╝
+
+📊 Resonance-Driven Learning (RDL):
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_rdl_create
+[32m✓ PASS[0m: venom_rdl_free
+[32m✓ PASS[0m: venom_rdl_learn/affinity (0.90, 0.30, 0.00)
+
+📊 Distributed Quantum Consensus (DQC):
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_dqc_node_create
+[32m✓ PASS[0m: venom_dqc_broadcast (2 entries)
+[32m✓ PASS[0m: venom_dqc_node_free
+[32m✓ PASS[0m: venom_dqc_sync
+
+📊 Quantum Compression Engine (QCE):
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_qce_compress (3 unique from 5, ratio=1.67x)
+[32m✓ PASS[0m: venom_qce_decompress (3 vectors)
+[32m✓ PASS[0m: venom_qce_free
+
+📊 Predictive Materialization (PM):
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_pm_create
+[32m✓ PASS[0m: venom_pm_predict_next (pred=1)
+[32m✓ PASS[0m: venom_pm_free
+
+═══════════════════════════════════════════════════════════
+Results: 13 passed, 0 failed
+═══════════════════════════════════════════════════════════
+   [0;32m✓ PASS[0m: test_rdl_dqc_qce_pm
+--------------------------------------------------------
+   ▶ Executing test_tls_soqm...
+
+╔══════════════════════════════════════════════════════════╗
+║       VenomQuantum: TLS & SOQM Tests                     ║
+╚══════════════════════════════════════════════════════════╝
+
+[32m✓ PASS[0m: venom_tls_now (t=1768143730)
+[32m✓ PASS[0m: Blob initial state (no timestamp)
+[32m✓ PASS[0m: venom_tls_stamp (v=1, t=1768143730)
+[32m✓ PASS[0m: venom_tls_increment_version (v1=1 -> v2=2)
+[32m✓ PASS[0m: TLS NULL handling
+[32m✓ PASS[0m: venom_quantum_access (count=3)
+[32m✓ PASS[0m: venom_quantum_reorganize
+[32m✓ PASS[0m: venom_quantum_reorganize NULL
+
+═══════════════════════════════════════════════════════════
+Results: 8 passed, 0 failed
+═══════════════════════════════════════════════════════════
+   [0;32m✓ PASS[0m: test_tls_soqm
+--------------------------------------------------------
+
+   --- RUNNING EXAMPLE IN VenomQuantum ---
+   ▶ Executing example_cage...
+
+═══════════════════════════════════════════════════════════
+    VenomQuantum Example: Venom Cage Compression
+═══════════════════════════════════════════════════════════
+
+📄 Original Data:
+───────────────────────────────────────────────────────────
+   "VENOM VENOM VENOM QUANTUM QUANTUM QUANTUM VENOM VENOM CAGE CAGE CAGE CAGE COMPRESSION COMPRESSION VENOM VENOM VENOM"
+   Size: 115 bytes
+
+🗜️  Compressing with Venom Cage...
+───────────────────────────────────────────────────────────
+[Venom Cage Stats]
+  Original Size: 116 bytes
+  Unique Atoms: 12
+  Compression Ratio: 0.37x
+───────────────────────────────────────────────────────────
+
+📤 Decompressing...
+   ✅ Decompression successful!
+   Recovered size: 116 bytes
+   Data integrity: VERIFIED ✓
+
+💾 Saving archive to /tmp/venom_demo...
+   Files created:
+   • /tmp/venom_demo.vcage (atoms)
+   • /tmp/venom_demo.vmap (positions)
+
+💡 Venom Cage uses atomic deduplication for compression!
+
+   [0;32m✓ PASS[0m: example_cage
+--------------------------------------------------------
+   ▶ Executing example_dream...
+
+═══════════════════════════════════════════════════════════
+    VenomQuantum Example: Dream State Processing
+═══════════════════════════════════════════════════════════
+
+🧠 Initializing Dream State Processor...
+   Initial state: AWAKE
+
+💭 Dream Cycle Simulation:
+───────────────────────────────────────────────────────────
+   → Entering LIGHT DREAM state
+     Memory consolidation: 20%
+   → Entering DEEP DREAM state
+     Memory consolidation: 50%
+   → Entering REM state
+     Memory consolidation: 90%
+     ... additional REM cycles ...
+     Final consolidation: 100%
+   → Waking up...
+     State: AWAKE
+     Dream cycles completed: 6
+───────────────────────────────────────────────────────────
+
+💡 DSP simulates sleep-based memory consolidation!
+
+   [0;32m✓ PASS[0m: example_dream
+--------------------------------------------------------
+   ▶ Executing example_entanglement...
+
+═══════════════════════════════════════════════════════════
+    VenomQuantum Example: Quantum Entanglement
+═══════════════════════════════════════════════════════════
+
+🌌 Opening Entanglement Registry...
+
+⚛️  Creating Quantum Entanglements:
+───────────────────────────────────────────────────────────
+   Electron A ↔ Electron B (strength: 0.95)
+   Electron A ↔ Photon X (strength: 0.75)
+   Photon X ↔ Photon Y (strength: 0.99)
+   Quark Q ↔ Electron A (strength: 0.60)
+───────────────────────────────────────────────────────────
+   Total entanglements: 4
+
+🔗 Finding particles entangled with Electron A:
+───────────────────────────────────────────────────────────
+   → Electron B (0xE2E2E2E2)
+   → Photon X (0xF0F0F0F0)
+   → Quark Q (0xCCCCCCCC)
+───────────────────────────────────────────────────────────
+   Found 3 entangled particles
+
+🌌 Registry closed.
+
+   [0;32m✓ PASS[0m: example_entanglement
+--------------------------------------------------------
+   ▶ Executing example_hypervector...
+
+═══════════════════════════════════════════════════════════
+    VenomQuantum Example: HyperDimensional Signatures
+═══════════════════════════════════════════════════════════
+
+🧠 Encoding concepts into 1024-bit HyperVectors:
+───────────────────────────────────────────────────────────
+   'apple'  → HV[AE368053A44550A2.94876FD5653D56BE.9CABE550FADA3F5E.DE055E60B72E1903...]
+   'red'    → HV[540B14D429210384.3595DCCA76206777.D438CFF52B3050FF.61EF9DF8B72C1446...]
+   'fruit'  → HV[F406FAC93196B28D.7C42E0B4338D8A12.554B58BD37689A84.72F1B7C9215BACCB...]
+   'banana' → HV[33E73302BDE1BBAE.401ADEA8437F3CCC.AC4973C006EF1345.4AF68EEE62EE6EF3...]
+
+📊 Similarity Analysis:
+───────────────────────────────────────────────────────────
+   apple vs apple:  100.00% (should be 100%)
+   apple vs banana: 51.76% (different fruits)
+   apple vs fruit:  51.86% (random correlation)
+   red vs fruit:    48.73% (unrelated concepts)
+
+🔗 Binding Operations (XOR composition):
+───────────────────────────────────────────────────────────
+   'red' ⊕ 'apple' = 'red_apple'
+   red_apple → HV[FA3D94878D645326.A112B31F131D31C9.48932AA5D1EA6FA1.BFEAC39800020D45...]
+   red_apple ⊕ 'red' = recovered 'apple'
+   Recovery accuracy: 100.00% ✓
+
+📦 Bundling (Majority voting):
+───────────────────────────────────────────────────────────
+   Bundle(apple, banana, fruit) = fruits_category
+   Similarity to apple:  77.15%
+   Similarity to banana: 74.61%
+   Similarity to red:    50.20% (unrelated)
+
+💡 HyperDimensional Computing enables semantic algebra!
+
+   [0;32m✓ PASS[0m: example_hypervector
+--------------------------------------------------------
+   ▶ Executing example_matrix...
+
+═══════════════════════════════════════════════════════════
+    VenomQuantum Example: The Universal Matrix
+═══════════════════════════════════════════════════════════
+
+📦 Creating VenomBlobs from integers...
+   Blob 0: value=42, size=4
+   Blob 1: value=100, size=4
+   Blob 2: value=255, size=4
+   Blob 3: value=1024, size=4
+   Blob 4: value=65535, size=4
+   Blob 5: value=999999, size=4
+
+🔮 Building Quantum Matrix...
+   Matrix created at 0x56892af452b0
+
+🔍 Quantum Search:
+───────────────────────────────────────────────────────────
+       42 → ✓ Found at Layer 30, Quadrant 2
+     1024 → ✓ Found at Layer 19, Quadrant 2
+      777 → ✗ Not found
+    65535 → ✓ Found at Layer 32, Quadrant 3
+───────────────────────────────────────────────────────────
+
+🧹 Matrix freed. Done!
+
+   [0;32m✓ PASS[0m: example_matrix
+--------------------------------------------------------
+   ▶ Executing example_multiverse...
+
+═══════════════════════════════════════════════════════════
+    VenomQuantum Example: Multiverse Branching
+═══════════════════════════════════════════════════════════
+
+🌌 Creating parallel universes...
+───────────────────────────────────────────────────────────
+   Created 5 parallel timelines:
+
+   Universe 0: Alice wins the lottery
+      Branch ID: 0
+      Status: SUPERPOSITION
+
+   Universe 1: Bob discovers time travel
+      Branch ID: 1
+      Status: SUPERPOSITION
+
+   Universe 2: Charlie becomes president
+      Branch ID: 2
+      Status: SUPERPOSITION
+
+   Universe 3: Diana invents fusion power
+      Branch ID: 3
+      Status: SUPERPOSITION
+
+   Universe 4: Eve solves P=NP
+      Branch ID: 4
+      Status: SUPERPOSITION
+
+🎲 Quantum observation occurring...
+   Selecting Universe 3 as the prime timeline...
+
+   After wave function collapse:
+───────────────────────────────────────────────────────────
+   Universe 0: ✗ Pruned
+   Universe 1: ✗ Pruned
+   Universe 2: ✗ Pruned
+   Universe 3: ✓ PRIME REALITY
+   Universe 4: ✗ Pruned
+───────────────────────────────────────────────────────────
+
+   🏆 Winner: Diana invents fusion power
+
+💡 MVB simulates quantum superposition & measurement!
+
+   [0;32m✓ PASS[0m: example_multiverse
+--------------------------------------------------------
+   ▶ Executing example_qdna...
+
+═══════════════════════════════════════════════════════════
+    VenomQuantum Example: Quantum DNA Evolution
+═══════════════════════════════════════════════════════════
+
+🧬 Creating parent genomes...
+───────────────────────────────────────────────────────────
+   Parent A (mutation rate: 10.0%):
+   [AA AA AA AA AA AA AA AA...]
+   Parent B (mutation rate: 10.0%):
+   [55 55 55 55 55 55 55 55...]
+
+🔀 Performing genetic crossover...
+───────────────────────────────────────────────────────────
+   Child (crossover of A and B):
+   [AA AA AA AA AA AA AA AA...]
+   Pattern: alternating genes from each parent
+
+⚡ Applying mutation...
+───────────────────────────────────────────────────────────
+   Child after mutation:
+   [AA AA AA AA AA AA AA AA...]
+
+📊 Fitness Evaluation:
+───────────────────────────────────────────────────────────
+   Parent A fitness: 0.9999
+   Parent B fitness: 0.9999
+   Child fitness:    0.9999
+
+🔄 Simulating evolution (5 generations):
+───────────────────────────────────────────────────────────
+   Generation 1: fitness = 0.9999
+   Generation 2: fitness = 0.9999
+   Generation 3: fitness = 0.9999
+   Generation 4: fitness = 0.9999
+   Generation 5: fitness = 0.9999
+
+💡 QDNA enables evolutionary computation!
+
+   [0;32m✓ PASS[0m: example_qdna
+--------------------------------------------------------
+   ▶ Executing example_soul...
+
+═══════════════════════════════════════════════════════════
+    VenomQuantum Example: Soul Binding & Akashic Records
+═══════════════════════════════════════════════════════════
+
+🔮 Soul Binding (Quantum Identity):
+───────────────────────────────────────────────────────────
+   Creating artifact: Excalibur (power: 9999)
+   ⚡ Soul bound!
+   Soul ID:    0xCAFEC541353BB57C
+   Birth time: 1768143730
+   Verify original: ✓ AUTHENTIC
+   Verify counterfeit: ✗ FAKE
+
+📚 Akashic Records (Universal Knowledge):
+───────────────────────────────────────────────────────────
+   Connected to Akashic Records
+   Available knowledge: ∞ bits
+
+   Consulting ancient wisdom:
+   • Code (0xC0DE) → wisdom: 0xc0de
+   • Death (0xDEAD) → wisdom: 0xdead
+   • Beef (0xBEEF) → wisdom: 0xbeef
+   • Cafe (0xCAFE) → wisdom: 0xcafe
+
+   Total records accessed: 4
+   Disconnected from Akashic Records
+
+💡 Soul Binding creates unforgeable digital identities!
+
+   [0;32m✓ PASS[0m: example_soul
+--------------------------------------------------------
+
+
+========================================================
+   MODULE: VenomML
+========================================================
+   [BUILD] Cleaning...
+rm -f test_tensor test_regression test_kqnn test_resonance test_vsqn_vision test_qgci test_ai_extensions
+rm -f ../../examples/VenomML/example_linear ../../examples/VenomML/example_kqnn ../../examples/VenomML/example_vsqn ../../examples/VenomML/example_qgci ../../examples/VenomML/example_resonance ../../examples/VenomML/example_vision
+🧹 Cleaned test and example binaries
+   [BUILD] Compiling...
+gcc -Wall -Wextra -O2 -g -I../.. test_tensor.c ../../build/lib/libvenom.a -lm -o test_tensor
+gcc -Wall -Wextra -O2 -g -I../.. test_regression.c ../../build/lib/libvenom.a -lm -o test_regression
+gcc -Wall -Wextra -O2 -g -I../.. test_kqnn.c ../../build/lib/libvenom.a -lm -o test_kqnn
+gcc -Wall -Wextra -O2 -g -I../.. test_resonance.c ../../build/lib/libvenom.a -lm -o test_resonance
+gcc -Wall -Wextra -O2 -g -I../.. test_vsqn_vision.c ../../build/lib/libvenom.a -lm -o test_vsqn_vision
+gcc -Wall -Wextra -O2 -g -I../.. test_qgci.c ../../build/lib/libvenom.a -lm -o test_qgci
+gcc -Wall -Wextra -O2 -g -I../.. test_ai_extensions.c ../../build/lib/libvenom.a -lm -o test_ai_extensions
+gcc -Wall -Wextra -O2 -g -I../.. ../../examples/VenomML/example_linear.c ../../build/lib/libvenom.a -lm -o ../../examples/VenomML/example_linear
+gcc -Wall -Wextra -O2 -g -I../.. ../../examples/VenomML/example_kqnn.c ../../build/lib/libvenom.a -lm -o ../../examples/VenomML/example_kqnn
+gcc -Wall -Wextra -O2 -g -I../.. ../../examples/VenomML/example_vsqn.c ../../build/lib/libvenom.a -lm -o ../../examples/VenomML/example_vsqn
+gcc -Wall -Wextra -O2 -g -I../.. ../../examples/VenomML/example_qgci.c ../../build/lib/libvenom.a -lm -o ../../examples/VenomML/example_qgci
+gcc -Wall -Wextra -O2 -g -I../.. ../../examples/VenomML/example_resonance.c ../../build/lib/libvenom.a -lm -o ../../examples/VenomML/example_resonance
+gcc -Wall -Wextra -O2 -g -I../.. ../../examples/VenomML/example_vision.c ../../build/lib/libvenom.a -lm -o ../../examples/VenomML/example_vision
+
+   --- RUNNING TEST IN VenomML ---
+   ▶ Executing test_ai_extensions...
+
+=== VENOM AI 2.0 EXTENSIONS TEST ===
+Testing Gravitational Feature Pooling (GFP)...
+   Heavy Sector Value: 16.125000
+   Light Sector Value: 1.500000
+   [0;32m[PASS][0m Mass attracted correctly.
+Testing Quantum Fourier Vision (QFV)...
+   Sig1: 69994611904, Sig2: 69994611904
+   [0;32m[PASS][0m Signature stable.
+Testing Schrödinger's Object Detection (SOD)...
+   [0;32m[PASS][0m Wave function collapsed (Object Found).
+Testing Entropic Loss Function (ELF)...
+   Loss Sharp: 0.002900, Loss Uncertain: 0.193651
+   [0;32m[PASS][0m Entropy correctly penalized.
+Testing Causal Video Tracking (CVT)...
+   [0;32m[PASS][0m Causal link verified.
+====================================
+
+   [0;32m✓ PASS[0m: test_ai_extensions
+--------------------------------------------------------
+   ▶ Executing test_kqnn...
+
+╔══════════════════════════════════════════════════════════╗
+║       VenomML: K-Quantum Nearest Neighbors (KQNN) Tests  ║
+╚══════════════════════════════════════════════════════════╝
+
+[32m✓ PASS[0m: venom_ml_kqnn_build (count=4, k=2)
+   KQNN predictions: low_point -> 0.0, high_point -> 1.0
+[32m✓ PASS[0m: KQNN predict low value point
+[32m✓ PASS[0m: KQNN predict high value point
+[32m✓ PASS[0m: KQNN NULL model handling
+[32m✓ PASS[0m: KQNN free NULL
+
+═══════════════════════════════════════════════════════════
+Results: 5 passed, 0 failed
+═══════════════════════════════════════════════════════════
+   [0;32m✓ PASS[0m: test_kqnn
+--------------------------------------------------------
+   ▶ Executing test_qgci...
+
+╔══════════════════════════════════════════════════════════╗
+║       VenomML: QGCI (Quantum Code Generation) Tests      ║
+╚══════════════════════════════════════════════════════════╝
+
+[32m✓ PASS[0m: venom_ml_qgci_build (empty model)
+[32m✓ PASS[0m: venom_ml_qgci_index_batch (6 snippets)
+[32m✓ PASS[0m: venom_ml_qgci_generate (found: "int multiply(int a, int b) { r...")
+[32m✓ PASS[0m: QGCI generate 'void' query (found: "void print_hello() { printf("H...")
+[32m✓ PASS[0m: venom_ml_qgci_generate_resonant (energy=0.95)
+[32m✓ PASS[0m: venom_ml_qgci_get_memory_usage (8089 bytes)
+[32m✓ PASS[0m: QGCI NULL model handling
+[32m✓ PASS[0m: QGCI free NULL
+
+═══════════════════════════════════════════════════════════
+Results: 8 passed, 0 failed
+═══════════════════════════════════════════════════════════
+   [0;32m✓ PASS[0m: test_qgci
+--------------------------------------------------------
+   ▶ Executing test_regression...
+
+╔══════════════════════════════════════════════════════════╗
+║       VenomML: Regression & Activation Tests             ║
+╚══════════════════════════════════════════════════════════╝
+
+📊 Activation Functions:
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_sigmoid(0) = 0.5000
+[32m✓ PASS[0m: venom_sigmoid extremes (neg=0.000045, pos=0.999955)
+[32m✓ PASS[0m: venom_relu (-5->0.0, 0->0.0, 3->3.0)
+
+📊 Linear Regression:
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_ml_linear_predict (y=2x+1, x=3 -> 7.00)
+   Training y = 2x...
+Epoch 0: Loss = 41.944607, W = 0.0440, B = 0.0120
+Epoch 200: Loss = 0.044956, W = 1.8518, B = 0.4765
+Epoch 400: Loss = 0.036737, W = 1.8754, B = 0.4492
+Epoch 600: Loss = 0.032089, W = 1.8837, B = 0.4199
+Epoch 800: Loss = 0.028029, W = 1.8913, B = 0.3924
+Epoch 1000: Loss = 0.024483, W = 1.8984, B = 0.3668
+Epoch 1200: Loss = 0.021386, W = 1.9051, B = 0.3428
+Epoch 1400: Loss = 0.018680, W = 1.9113, B = 0.3204
+Epoch 1600: Loss = 0.016317, W = 1.9171, B = 0.2994
+Epoch 1800: Loss = 0.014253, W = 1.9225, B = 0.2798
+[32m✓ PASS[0m: venom_ml_linear_train (w=1.928, b=0.262)
+[32m✓ PASS[0m: Trained model prediction (x=10 -> 19.54)
+
+📊 Logistic Regression:
+───────────────────────────────────────────────────────────
+[32m✓ PASS[0m: venom_ml_logistic_predict(0) = 0.5000
+[32m✓ PASS[0m: Logistic extremes (neg=0.0067, pos=0.9933)
+[32m✓ PASS[0m: Logistic training (neg=0.000, pos=1.000)
+
+═══════════════════════════════════════════════════════════
+Results: 9 passed, 0 failed
+═══════════════════════════════════════════════════════════
+   [0;32m✓ PASS[0m: test_regression
+--------------------------------------------------------
+   ▶ Executing test_resonance...
+
+╔══════════════════════════════════════════════════════════╗
+║       VenomML: Resonance Field Tests                     ║
+╚══════════════════════════════════════════════════════════╝
+
+[32m✓ PASS[0m: venom_ml_resonance_open (initial state)
+[32m✓ PASS[0m: venom_ml_resonance_close
+[32m✓ PASS[0m: venom_ml_resonance_sync high intensity
+[32m✓ PASS[0m: Resonance accumulation
+[32m✓ PASS[0m: Initial energy = 0
+[32m✓ PASS[0m: Energy after sync (0.75)
+[32m✓ PASS[0m: NULL field energy
+[32m✓ PASS[0m: venom_ml_resonance_dampen (1.0 * 0.5 = 0.50)
+[32m✓ PASS[0m: Full dampen resets field
+[32m✓ PASS[0m: Interference varies by similarity
+   Similar: 0xFFFFFFFFFFFFFFFF, Opposite: 0xFFFFFFFF00000000
+
+═══════════════════════════════════════════════════════════
+Results: 10 passed, 0 failed
+═══════════════════════════════════════════════════════════
+   [0;32m✓ PASS[0m: test_resonance
+--------------------------------------------------------
+   ▶ Executing test_tensor...
+
+╔══════════════════════════════════════════════════════════╗
+║       VenomML: Tensor Operations Tests                   ║
+╚══════════════════════════════════════════════════════════╝
+
+[32m✓ PASS[0m: venom_tensor_create 1D (size=10)
+[32m✓ PASS[0m: venom_tensor_create 2D (5x3=15)
+[32m✓ PASS[0m: venom_tensor_create 3D (2x3x4=24)
+[32m✓ PASS[0m: Tensor data zero-initialized
+[32m✓ PASS[0m: venom_dot_product (result=10.00)
+[32m✓ PASS[0m: venom_dot_product complex (result=5.00)
+[32m✓ PASS[0m: Dot product size mismatch handling
+[32m✓ PASS[0m: venom_tensor_free NULL
+
+═══════════════════════════════════════════════════════════
+Results: 8 passed, 0 failed
+═══════════════════════════════════════════════════════════
+   [0;32m✓ PASS[0m: test_tensor
+--------------------------------------------------------
+   ▶ Executing test_vsqn_vision...
+
+╔══════════════════════════════════════════════════════════╗
+║       VenomML: VSQN & Vision Tests                       ║
+╚══════════════════════════════════════════════════════════╝
+
+📊 VenomVision (Patch to Signature):
+───────────────────────────────────────────────────────────
+   Bright patch: 0 bits set (sig=0x0)
+   Dark patch: 64 bits set (sig=0xFFFFFFFFFFFFFFFF)
+[32m✓ PASS[0m: venom_vision_patch_to_sig (different patterns)
+[32m✓ PASS[0m: Gradient patch signature (32/64 bits, sig=0xFFFFFFFF)
+
+📊 VSQN (Sparse Quantum Network):
+───────────────────────────────────────────────────────────
+   Building VSQN (10 inputs, 50 neurons)...
+Creating 50 Quantum Neurons and Mapping to Matrix...
+[32m✓ PASS[0m: venom_ml_vsqn_build
+   Building VSQN for forward pass...
+Creating 20 Quantum Neurons and Mapping to Matrix...
+  [VSQN] Input aligned to Layer 8, Quadrant 3. Activating 3/20 neurons.
+[32m✓ PASS[0m: venom_ml_vsqn_forward (output=0.5632)
+   Building VSQN with resonance field...
+Creating 20 Quantum Neurons and Mapping to Matrix...
+  [VSQN] Input aligned to Layer 8, Quadrant 3. Activating 3/20 neurons.
+[32m✓ PASS[0m: VSQN forward with resonance sync (energy=0.80)
+   Testing VSQN training step...
+Creating 30 Quantum Neurons and Mapping to Matrix...
+[32m✓ PASS[0m: venom_ml_vsqn_train_step
+[32m✓ PASS[0m: VSQN free NULL
+[32m✓ PASS[0m: VSQN forward NULL layer
+
+═══════════════════════════════════════════════════════════
+Results: 8 passed, 0 failed
+═══════════════════════════════════════════════════════════
+   [0;32m✓ PASS[0m: test_vsqn_vision
+--------------------------------------------------------
+
+   --- RUNNING EXAMPLE IN VenomML ---
+   ▶ Executing example_kqnn...
+
+═══════════════════════════════════════════════════════════
+    VenomML Example: KQNN Classification
+═══════════════════════════════════════════════════════════
+
+📊 Creating Dataset: 2D Point Classification
+   Class 0: Points near origin (low values)
+   Class 1: Points far from origin (high values)
+
+   Training Data:
+───────────────────────────────────────────────────────────
+   (1.0, 1.0) -> Class 0
+   (1.5, 2.0) -> Class 0
+   (2.0, 1.5) -> Class 0
+   (2.5, 2.5) -> Class 0
+   (8.0, 8.0) -> Class 1
+   (9.0, 8.5) -> Class 1
+   (8.5, 9.0) -> Class 1
+   (9.5, 9.5) -> Class 1
+
+🔮 Building KQNN Model (k=3)...
+   Model built with 8 samples in Quantum Matrix
+
+🎯 Predictions:
+───────────────────────────────────────────────────────────
+   (1.2, 1.8) -> Predicted Class: 0
+   (2.0, 2.0) -> Predicted Class: 0
+   (5.0, 5.0) -> Predicted Class: 0
+   (8.2, 8.7) -> Predicted Class: -1
+   (9.0, 9.0) -> Predicted Class: 1
+
+💡 KQNN uses Quantum Matrix for O(log n) neighbor search!
+
+   [0;32m✓ PASS[0m: example_kqnn
+--------------------------------------------------------
+   ▶ Executing example_linear...
+
+═══════════════════════════════════════════════════════════
+    VenomML Example: Linear Regression
+═══════════════════════════════════════════════════════════
+
+📊 Training Data: y = 3x + 2
+───────────────────────────────────────────────────────────
+   x=1.0 -> y=5.0
+   x=2.0 -> y=8.0
+   x=3.0 -> y=11.0
+   x=4.0 -> y=14.0
+   x=5.0 -> y=17.0
+
+🔧 Training Model (1000 epochs, lr=0.05)...
+───────────────────────────────────────────────────────────
+Epoch 0: Loss = 4.860003, W = 3.9000, B = 1.1000
+Epoch 100: Loss = 0.006853, W = 3.0537, B = 1.8060
+Epoch 200: Loss = 0.000226, W = 3.0098, B = 1.9647
+Epoch 300: Loss = 0.000007, W = 3.0018, B = 1.9936
+Epoch 400: Loss = 0.000000, W = 3.0003, B = 1.9988
+Epoch 500: Loss = 0.000000, W = 3.0001, B = 1.9998
+Epoch 600: Loss = 0.000000, W = 3.0000, B = 2.0000
+Epoch 700: Loss = 0.000000, W = 3.0000, B = 2.0000
+Epoch 800: Loss = 0.000000, W = 3.0000, B = 2.0000
+Epoch 900: Loss = 0.000000, W = 3.0000, B = 2.0000
+
+📈 Learned Parameters:
+   Weight: 3.0000 (expected: 3.0)
+   Bias:   2.0000 (expected: 2.0)
+
+🔮 Predictions:
+───────────────────────────────────────────────────────────
+   x=10.0 -> predicted=32.00 (actual=32.00)
+   x=20.0 -> predicted=62.00 (actual=62.00)
+   x=100.0 -> predicted=302.00 (actual=302.00)
+
+💡 VenomML uses gradient descent for linear regression!
+
+   [0;32m✓ PASS[0m: example_linear
+--------------------------------------------------------
+   ▶ Executing example_qgci...
+
+═══════════════════════════════════════════════════════════
+    VenomML Example: QGCI Code Generation
+═══════════════════════════════════════════════════════════
+
+📚 Building Code Index...
+   Indexing 10 code snippets...
+   ✅ Index built!
+
+🔍 Code Generation Queries:
+───────────────────────────────────────────────────────────
+   Query: "int"
+   → int multiply(int x, int y) { return x * y; }
+
+   Query: "void"
+   → void print_hello() { printf("Hello World!\n"); }
+
+   Query: "for"
+   → for (int i = 0; i < n; i++) { sum += arr[i]; }
+
+   Query: "while"
+   → while (count > 0) { process(); count--; }
+
+   Query: "if"
+   → ... (No Logical Match)
+
+🌊 Resonance-Enhanced Generation:
+───────────────────────────────────────────────────────────
+   Query: "int" (with arithmetic resonance)
+   → float divide(float a, float b) { return a / b; }
+   Field Energy: 0.85
+
+📊 Memory Statistics:
+───────────────────────────────────────────────────────────
+   Index Memory: 12557 bytes
+
+💡 QGCI indexes code with quantum prefix signatures!
+
+   [0;32m✓ PASS[0m: example_qgci
+--------------------------------------------------------
+   ▶ Executing example_resonance...
+
+═══════════════════════════════════════════════════════════
+    VenomML Example: Neural Resonance Field
+═══════════════════════════════════════════════════════════
+
+🌊 Opening Resonance Field...
+   Initial State:
+   • Vibration: 0x0
+   • Energy: 0.00
+
+📡 Simulating ML Module Synchronization:
+───────────────────────────────────────────────────────────
+   Module A syncs (sig=0xAAAA, intensity=0.9)
+   → Vibration: 0xAAAA, Energy: 0.90
+   Module B syncs (sig=0xBBBB, intensity=0.3)
+   → Vibration: 0xAAAA, Energy: 0.93
+   Module C syncs (sig=0xAAAA, intensity=0.95)
+   → Vibration: 0xAAAA, Energy: 0.95
+
+🔬 Interference Analysis:
+───────────────────────────────────────────────────────────
+   Same (0xAAAA): Interference = 0xF333330000000000
+   Different (0xBBBB): Interference = 0xF33332FFFFFFF000
+   Random (0xCCCC): Interference = 0xF33332FFFFFFA000
+   Opposite (0x5555): Interference = 0xF33332FFFFFF1000
+
+⚡ Energy Damping:
+───────────────────────────────────────────────────────────
+   Dampen 50%: Energy = 0.4750
+   Dampen 50%: Energy = 0.2375
+   Dampen 50%: Energy = 0.1187
+   Dampen 50%: Energy = 0.0594
+   Dampen 50%: Energy = 0.0297
+   Final dampen: Energy = 0.0000, Vibration = 0x0
+
+💡 Resonance Field unifies ML module activations!
+
+   [0;32m✓ PASS[0m: example_resonance
+--------------------------------------------------------
+   ▶ Executing example_vision...
+
+═══════════════════════════════════════════════════════════
+    VenomML Example: Vision Processing
+═══════════════════════════════════════════════════════════
+
+🖼️  Visual Patterns:
+───────────────────────────────────────────────────────────
+   Square:
+   ░░░░░░░░
+   ░░░░░░░░
+   ░░████░░
+   ░░████░░
+   ░░████░░
+   ░░████░░
+   ░░░░░░░░
+   ░░░░░░░░
+
+   Cross:
+   ░░░░█░░░
+   ░░░░█░░░
+   ░░░░█░░░
+   ░░░░█░░░
+   ████████
+   ░░░░█░░░
+   ░░░░█░░░
+   ░░░░█░░░
+
+   Diagonal X:
+   █░░░░░░█
+   ░█░░░░█░
+   ░░█░░█░░
+   ░░░██░░░
+   ░░░██░░░
+   ░░█░░█░░
+   ░█░░░░█░
+   █░░░░░░█
+
+🔬 Quantum Signature Extraction:
+───────────────────────────────────────────────────────────
+   Square:   0x00003C3C3C3C0000 (16 bits set)
+   Cross:    0x08080808FF080808 (15 bits set)
+   Diagonal: 0x8142241818244281 (16 bits set)
+   Gradient: 0x00000000FFFFFFFF (32 bits set)
+
+📊 Signature Similarity (via XOR distance):
+───────────────────────────────────────────────────────────
+   Square vs Cross:    17 bits different
+   Square vs Diagonal: 16 bits different
+   Cross vs Diagonal:  25 bits different
+
+💡 VenomVision converts spatial patterns to 64-bit quantum signatures!
+
+   [0;32m✓ PASS[0m: example_vision
+--------------------------------------------------------
+   ▶ Executing example_vsqn...
+
+═══════════════════════════════════════════════════════════
+    VenomML Example: VSQN Neural Network
+═══════════════════════════════════════════════════════════
+
+🧠 Building Sparse Quantum Network...
+   Input Size: 8 features
+   Neurons: 100 (quantum-organized)
+
+Creating 100 Quantum Neurons and Mapping to Matrix...
+📊 Training Patterns:
+───────────────────────────────────────────────────────────
+   Pattern A (High): [0.80, 0.85, 0.90, 0.80, 0.85, 0.90, 0.80, 0.85] -> Target: 1.0
+   Pattern B (Low):  [0.10, 0.15, 0.20, 0.10, 0.15, 0.20, 0.10, 0.15] -> Target: 0.0
+
+🔧 Training (200 epochs)...
+───────────────────────────────────────────────────────────
+  [Migration] Empty Quadrant for Layer 0. Migrating 30 neurons...
+   Training complete!
+
+🔮 Testing Predictions:
+───────────────────────────────────────────────────────────
+  [VSQN] Input aligned to Layer 8, Quadrant 3. Activating 20/100 neurons.
+   Pattern A (High) -> Output: 0.7780 (expected ~1.0)
+  [VSQN] Input aligned to Layer 0, Quadrant 0. Activating 9/100 neurons.
+   Pattern B (Low)  -> Output: 0.4279 (expected ~0.0)
+  [VSQN] Input aligned to Layer 8, Quadrant 3. Activating 20/100 neurons.
+   Pattern C (Mixed) -> Output: 0.6897 (expected ~0.5)
+
+💡 VSQN activates only relevant neurons via quantum sparsity!
+
+   [0;32m✓ PASS[0m: example_vsqn
+--------------------------------------------------------
